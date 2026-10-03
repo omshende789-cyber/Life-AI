@@ -1,0 +1,572 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at 20% 20%, #30235c 0%, transparent 35%),
+        radial-gradient(circle at 80% 80%, #1c3159 0%, transparent 35%),
+        #080812;
+
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    overflow-x: hidden;
+}
+
+.app {
+    width: 100%;
+    max-width: 500px;
+}
+
+
+/* =========================
+   WELCOME SCREEN
+========================= */
+
+.welcome-screen {
+    text-align: center;
+
+    animation: fadeIn 1s ease;
+}
+
+.logo {
+    font-size: 65px;
+
+    filter: drop-shadow(0 0 20px rgba(150, 120, 255, 0.7));
+
+    animation: float 3s ease-in-out infinite;
+}
+
+h1 {
+    margin-top: 10px;
+
+    font-size: 46px;
+
+    letter-spacing: 7px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #b9a7ff,
+        #ffffff
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+    margin-top: 12px;
+
+    color: #aaa6bd;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.form-card {
+    margin-top: 35px;
+
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+label {
+    display: block;
+
+    text-align: left;
+
+    margin-top: 15px;
+    margin-bottom: 10px;
+
+    font-size: 14px;
+
+    color: #d8d4e8;
+}
+
+input {
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    background: rgba(0, 0, 0, 0.25);
+
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #9b82ff;
+
+    box-shadow:
+        0 0 20px rgba(130, 100, 255, 0.2);
+}
+
+input::placeholder {
+    color: #777389;
+}
+
+
+/* =========================
+   GENDER
+========================= */
+
+.gender-options {
+    display: flex;
+
+    gap: 12px;
+}
+
+.gender-btn {
+    flex: 1;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.gender-btn:hover {
+    transform: translateY(-2px);
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.gender-btn.selected {
+    background: #7358d9;
+
+    border-color: #a993ff;
+
+    box-shadow:
+        0 0 25px rgba(115, 88, 217, 0.35);
+}
+
+
+/* =========================
+   REVEAL BUTTON
+========================= */
+
+.reveal-btn {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #7558df,
+        #4d7be8
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(90, 70, 200, 0.35);
+
+    transition: 0.25s;
+}
+
+.reveal-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(90, 70, 200, 0.5);
+}
+
+.reveal-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   MESSAGE SCREEN
+========================= */
+
+.message-screen {
+    text-align: center;
+
+    animation: fadeIn 0.7s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf4,
+            #f4ecd6
+        );
+
+    color: #29251e;
+
+    padding: 38px 30px;
+
+    min-height: 450px;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.5);
+
+    text-align: left;
+
+    transform-origin: top center;
+
+    animation: letterOpen 1s ease;
+}
+
+
+/* Paper texture effect */
+
+.letter::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 28px,
+            rgba(100, 80, 50, 0.04) 29px
+        );
+}
+
+
+/* Letter icon */
+
+.letter-top {
+    text-align: center;
+
+    font-size: 45px;
+
+    margin-bottom: 25px;
+}
+
+.dear {
+    font-family: Georgia, serif;
+
+    font-size: 21px;
+
+    margin-bottom: 25px;
+}
+
+.message {
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    min-height: 180px;
+}
+
+.signature {
+    font-family: Georgia, serif;
+
+    text-align: right;
+
+    font-style: italic;
+
+    margin-top: 30px;
+}
+
+
+/* =========================
+   AGAIN BUTTON
+========================= */
+
+.again-btn {
+    margin-top: 25px;
+
+    padding: 13px 25px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.again-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+@keyframes letterOpen {
+
+    from {
+        opacity: 0;
+
+        transform:
+            perspective(800px)
+            rotateX(-20deg)
+            translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            perspective(800px)
+            rotateX(0)
+            translateY(0);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+
+    .letter {
+        padding: 30px 22px;
+    }
+
+    .message {
+        font-size: 17px;
+    }
+
+}
+/* =========================
+   RESULT SECTIONS
+========================= */
+
+.result-section {
+    margin-bottom: 28px;
+}
+
+.section-title {
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
+
+    color: #5b4b32;
+}
+
+.result-section p {
+    white-space: pre-line;
+
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #29251e;
+}
+
+.funny-section {
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 220, 120, 0.2);
+}
+/* =========================
+   OPTIONAL MEDIA
+   VIDEO / IMAGE / AUDIO
+========================= */
+
+.media-container {
+    width: 100%;
+
+    margin-top: 25px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* VIDEO & IMAGE */
+
+.media-container video,
+.media-container img {
+    display: block;
+
+    width: min(100%, 360px);
+
+    max-height: 520px;
+
+    border-radius: 18px;
+
+    object-fit: cover;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+/* VIDEO */
+
+.media-container video {
+    background: #000;
+
+    outline: none;
+}
+
+
+/* AUDIO */
+
+.media-container audio {
+    width: min(100%, 360px);
+
+    margin-top: 5px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+
+    .media-container video,
+    .media-container img {
+        width: 100%;
+
+        max-height: 500px;
+
+        border-radius: 15px;
+    }
+
+    .media-container audio {
+        width: 100%;
+    }
+
+}

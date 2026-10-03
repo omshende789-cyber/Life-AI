@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Life AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- =========================
+             WELCOME SCREEN
+        ========================== -->
+
+        <section class="welcome-screen">
+
+            <div class="logo">
+                🔮
+            </div>
+
+            <h1>LIFE AI</h1>
+
+            <p class="tagline">
+                Maybe this message is meant for you...
+            </p>
+
+            <div class="form-card">
+
+                <label for="name">
+                    Enter Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your name..."
+                    autocomplete="off"
+                >
+
+                <label>
+                    You are
+                </label>
+
+                <div class="gender-options">
+
+                    <button
+                        type="button"
+                        class="gender-btn"
+                        data-gender="man"
+                    >
+                        👨 Man
+                    </button>
+
+                    <button
+                        type="button"
+                        class="gender-btn"
+                        data-gender="lady"
+                    >
+                        👩 Lady
+                    </button>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="revealBtn"
+                    class="reveal-btn"
+                >
+                    REVEAL 🔮
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MESSAGE SCREEN
+        ========================== -->
+
+        <section
+            class="message-screen hidden"
+            id="messageScreen"
+        >
+
+            <div class="letter">
+
+                <div class="letter-top">
+                    💌
+                </div>
+
+                <p
+                    class="dear"
+                    id="dearText"
+                >
+                    Dear...
+                </p>
+
+                <!-- MESSAGE -->
+                <div
+                    class="message"
+                    id="messageText"
+                ></div>
+
+
+                <!-- =========================
+                     OPTIONAL MEDIA
+                     Video / Image / Audio
+                ========================== -->
+
+                <div
+                    id="mediaContainer"
+                    class="media-container"
+                ></div>
+
+
+                <!-- SIGNATURE -->
+
+                <p class="signature">
+                    — LIFE AI 🔮
+                </p>
+
+            </div>
+
+
+            <!-- TRY AGAIN -->
+
+            <button
+                type="button"
+                id="againBtn"
+                class="again-btn"
+            >
+                🔄 Try Again
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js?v=5"></script>
+
+</body>
+
+</html>

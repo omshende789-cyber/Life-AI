@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LIFE AI - QR Generator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #bbb;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        #generateBtn {
+            background: white;
+            color: #222;
+        }
+
+        #downloadBtn {
+            display: none;
+            background: #00d4ff;
+            color: #111;
+            margin-top: 20px;
+        }
+
+        #qrcode {
+            margin: 25px auto 0;
+            width: 220px;
+            min-height: 220px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #qrcode img,
+        #qrcode canvas {
+            display: block;
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🔮 LIFE AI</h1>
+
+    <p class="subtitle">QR Code Generator</p>
+
+    <div class="card">
+
+        <label for="websiteUrl">Website URL</label>
+
+        <input
+            type="text"
+            id="websiteUrl"
+            placeholder="Enter website URL"
+        >
+
+        <button id="generateBtn">
+            GENERATE QR 🔳
+        </button>
+
+        <div id="qrcode"></div>
+
+        <button id="downloadBtn">
+            DOWNLOAD QR 📥
+        </button>
+
+    </div>
+
+</div>
+
+<!-- QRCode Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+
+const urlInput = document.getElementById("websiteUrl");
+const generateBtn = document.getElementById("generateBtn");
+const qrContainer = document.getElementById("qrcode");
+const downloadBtn = document.getElementById("downloadBtn");
+
+let currentQRNumber = 0;
+
+generateBtn.addEventListener("click", function () {
+
+    const url = urlInput.value.trim();
+
+    if (!url) {
+        alert("Please enter a URL");
+        return;
+    }
+
+    if (typeof QRCode === "undefined") {
+        alert("QR library load nahi hui. Internet connection check karo.");
+        return;
+    }
+
+    // Generate unique ID every time
+    currentQRNumber++;
+
+    const uniqueID =
+        Date.now().toString(36) +
+        "-" +
+        currentQRNumber +
+        "-" +
+        Math.random().toString(36).substring(2, 8);
+
+    // Add unique parameter to URL
+    const separator = url.includes("?") ? "&" : "?";
+
+    const uniqueURL =
+        url + separator + "qr=" + uniqueID;
+
+    // Clear previous QR
+    qrContainer.innerHTML = "";
+
+    // Generate NEW QR
+    new QRCode(qrContainer, {
+        text: uniqueURL,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+
+    downloadBtn.style.display = "block";
+
+    console.log("QR URL:", uniqueURL);
+});
+
+downloadBtn.addEventListener("click", function () {
+
+    const canvas = qrContainer.querySelector("canvas");
+
+    if (!canvas) {
+        alert("QR generate nahi hua.");
+        return;
+    }
+
+    const link = document.createElement("a");
+
+    link.download = "life-ai-qr-" + currentQRNumber + ".png";
+
+    link.href = canvas.toDataURL("image/png");
+
+    link.click();
+
+});
+
+</script>
+
+</body>
+</html>
